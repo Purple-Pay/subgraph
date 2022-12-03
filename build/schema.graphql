@@ -1,0 +1,28 @@
+type MerchatWalletCreated @entity(immutable: true) {
+	id: Bytes!
+	merchantAddress: Bytes! # address
+	merchantWallet: Bytes! # address
+	blockNumber: BigInt!
+	blockTimestamp: BigInt!
+	transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+	id: Bytes!
+	previousOwner: Bytes! # address
+	newOwner: Bytes! # address
+	blockNumber: BigInt!
+	blockTimestamp: BigInt!
+	transactionHash: Bytes!
+}
+
+type PaymentRecieved @entity(immutable: true) {
+	id: Bytes!
+	orderId: String! # string
+	amount: BigInt! # uint256
+	sender: Bytes! # address
+	merchantWallet: Bytes! # address
+	blockNumber: BigInt!
+	blockTimestamp: BigInt!
+	transactionHash: Bytes!
+}

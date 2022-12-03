@@ -1,0 +1,49 @@
+specVersion: 0.0.5
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Contract
+    network: mumbai
+    source:
+      address: "0xdaFE5BB14f41954C26bc1f81B20Ad138C9b8CD69"
+      abi: Contract
+      startBlock: 29421382
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - MerchatWalletCreated
+        - OwnershipTransferred
+      abis:
+        - name: Contract
+          file: Contract/abis/Contract.json
+      eventHandlers:
+        - event: MerchatWalletCreated(address,address)
+          handler: handleMerchatWalletCreated
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: Contract/Contract.wasm
+templates:
+  - name: Merchant
+    kind: ethereum
+    network: mumbai
+    source:
+      abi: merchant
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OwnershipTransferred
+        - PaymentRecieved
+      abis:
+        - name: merchant
+          file: Merchant/abis/merchant.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PaymentRecieved(string,uint256,address,address)
+          handler: handlePaymentRecieved
+      file: templates/Merchant/Merchant.wasm
