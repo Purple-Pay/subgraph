@@ -29,7 +29,19 @@
       {
         "indexed": false,
         "internalType": "string",
-        "name": "orderId",
+        "name": "merchantOrderId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "paymentId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "sessionId",
         "type": "string"
       },
       {
@@ -47,7 +59,7 @@
       {
         "indexed": false,
         "internalType": "address",
-        "name": "merchant",
+        "name": "merchantWallet",
         "type": "address"
       }
     ],
@@ -84,7 +96,17 @@
     "inputs": [
       {
         "internalType": "string",
-        "name": "orderId",
+        "name": "merchantOrderId",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "paymentId",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "sessionId",
         "type": "string"
       }
     ],

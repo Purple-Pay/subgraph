@@ -16,7 +16,7 @@
       {
         "indexed": false,
         "internalType": "address",
-        "name": "merchant",
+        "name": "merchantWallet",
         "type": "address"
       }
     ],

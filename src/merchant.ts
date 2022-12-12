@@ -22,10 +22,12 @@ export function handleOwnershipTransferred(
 
 export function handlePaymentRecieved(event: PaymentRecievedEvent): void {
 	let entity = new PaymentRecieved(event.transaction.hash);
-	entity.orderId = event.params.orderId;
+	entity.paymentId = event.params.paymentId;
+	entity.sessionId = event.params.sessionId;
+	entity.merchantOrderId = event.params.merchantOrderId;
 	entity.amount = event.params.amount;
 	entity.sender = event.params.sender;
-	entity.merchantWallet = event.params.merchant;
+	entity.merchantWallet = event.params.merchantWallet;
 
 	entity.blockNumber = event.block.number;
 	entity.blockTimestamp = event.block.timestamp;

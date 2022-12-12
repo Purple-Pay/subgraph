@@ -45,20 +45,28 @@ export class PaymentRecieved__Params {
     this._event = event;
   }
 
-  get orderId(): string {
+  get merchantOrderId(): string {
     return this._event.parameters[0].value.toString();
   }
 
+  get paymentId(): string {
+    return this._event.parameters[1].value.toString();
+  }
+
+  get sessionId(): string {
+    return this._event.parameters[2].value.toString();
+  }
+
   get amount(): BigInt {
-    return this._event.parameters[1].value.toBigInt();
+    return this._event.parameters[3].value.toBigInt();
   }
 
   get sender(): Address {
-    return this._event.parameters[2].value.toAddress();
+    return this._event.parameters[4].value.toAddress();
   }
 
-  get merchant(): Address {
-    return this._event.parameters[3].value.toAddress();
+  get merchantWallet(): Address {
+    return this._event.parameters[5].value.toAddress();
   }
 }
 
@@ -145,8 +153,16 @@ export class RecievePaymentsCall__Inputs {
     this._call = call;
   }
 
-  get orderId(): string {
+  get merchantOrderId(): string {
     return this._call.inputValues[0].value.toString();
+  }
+
+  get paymentId(): string {
+    return this._call.inputValues[1].value.toString();
+  }
+
+  get sessionId(): string {
+    return this._call.inputValues[2].value.toString();
   }
 }
 

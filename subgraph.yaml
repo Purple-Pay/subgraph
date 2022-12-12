@@ -4,11 +4,11 @@ schema:
 dataSources:
     - kind: ethereum
       name: Contract
-      network: mumbai
+      network: goerli
       source:
-          address: "0xdaFE5BB14f41954C26bc1f81B20Ad138C9b8CD69"
+          address: "0xa694be92181e228738470ea50c2c7f8fbbc77c62"
           abi: Contract
-          startBlock: 29421382
+          startBlock:  8123546
       mapping:
           kind: ethereum/events
           apiVersion: 0.0.7
@@ -28,7 +28,7 @@ dataSources:
 templates:
     - name: Merchant
       kind: ethereum
-      network: mumbai
+      network: goerli
       source:
           abi: merchant
       mapping:
@@ -44,6 +44,6 @@ templates:
           eventHandlers:
               - event: OwnershipTransferred(indexed address,indexed address)
                 handler: handleOwnershipTransferred
-              - event: PaymentRecieved(string,uint256,address,address)
+              - event: PaymentRecieved(string,string,string,uint256,address,address)
                 handler: handlePaymentRecieved
           file: ./src/merchant.ts

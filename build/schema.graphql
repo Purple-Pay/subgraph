@@ -18,7 +18,9 @@ type OwnershipTransferred @entity(immutable: true) {
 
 type PaymentRecieved @entity(immutable: true) {
 	id: Bytes!
-	orderId: String! # string
+	paymentId: String! # string
+	sessionId: String! # string
+	merchantOrderId: String! # string
 	amount: BigInt! # uint256
 	sender: Bytes! # address
 	merchantWallet: Bytes! # address

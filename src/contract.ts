@@ -15,7 +15,7 @@ export function handleMerchatWalletCreated(
 		event.transaction.hash.concatI32(event.logIndex.toI32())
 	);
 	entity.merchantAddress = event.params.merchantAddress;
-	entity.merchantWallet = event.params.merchant;
+	entity.merchantWallet = event.params.merchantWallet;
 
 	entity.blockNumber = event.block.number;
 	entity.blockTimestamp = event.block.timestamp;
@@ -23,7 +23,7 @@ export function handleMerchatWalletCreated(
 
 	entity.save();
 
-	Merchant.create(event.params.merchant);
+	Merchant.create(event.params.merchantWallet);
 }
 
 export function handleOwnershipTransferred(
